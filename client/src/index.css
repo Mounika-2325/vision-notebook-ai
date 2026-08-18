@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-slate-50 dark:bg-[#09090f] text-slate-900 dark:text-slate-100;
+  }
+
+  /* Custom scrollbar */
+  :root {
+    --sb-track: #e2e8f0;
+    --sb-thumb: #94a3b8;
+  }
+  .dark {
+    --sb-track: #1e293b;
+    --sb-thumb: #475569;
+  }
+  * { scrollbar-width: thin; scrollbar-color: var(--sb-thumb) var(--sb-track); }
+  *::-webkit-scrollbar { width: 6px; height: 6px; }
+  *::-webkit-scrollbar-track { background: var(--sb-track); border-radius: 3px; }
+  *::-webkit-scrollbar-thumb { background: var(--sb-thumb); border-radius: 3px; }
+
+  h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.01em; }
+}
+
+@layer components {
+  /* Glass morphism cards */
+  .glass {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl
+           border border-white/50 dark:border-slate-700/50
+           shadow-xl shadow-slate-200/40 dark:shadow-slate-950/40
+           rounded-2xl;
+  }
+
+  .glass-sm {
+    @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg
+           border border-white/60 dark:border-slate-700/60
+           shadow-lg rounded-xl;
+  }
+
+  /* Gradient backgrounds */
+  .bg-hero {
+    background: linear-gradient(135deg,
+      #f0f0ff 0%, #e8e8ff 25%, #f5f0ff 50%, #f0f5ff 75%, #e8f4ff 100%);
+  }
+  .dark .bg-hero {
+    background: linear-gradient(135deg,
+      #09090f 0%, #0f0a1e 25%, #0a0f1e 50%, #0f0a1e 75%, #09090f 100%);
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-white
+           bg-gradient-to-r from-violet-600 to-indigo-600
+           hover:from-violet-500 hover:to-indigo-500
+           shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40
+           transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm
+           bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700
+           text-slate-700 dark:text-slate-300
+           border border-slate-200 dark:border-slate-700
+           transition-all duration-200 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-sm
+           text-slate-600 dark:text-slate-400
+           hover:bg-slate-100 dark:hover:bg-slate-800
+           transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm text-white
+           bg-red-500 hover:bg-red-600 transition-all duration-200 active:scale-95;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl text-sm
+           bg-white dark:bg-slate-800
+           border border-slate-200 dark:border-slate-700
+           text-slate-900 dark:text-slate-100
+           placeholder-slate-400 dark:placeholder-slate-500
+           focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500
+           transition-all duration-200;
+  }
+
+  /* Tags / Badges */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-violet { @apply badge bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300; }
+  .badge-indigo { @apply badge bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300; }
+  .badge-cyan   { @apply badge bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300; }
+  .badge-green  { @apply badge bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300; }
+  .badge-amber  { @apply badge bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300; }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-slate-200 dark:border-slate-700/60;
+  }
+
+  /* Section headings */
+  .section-title {
+    @apply text-xl font-bold text-slate-800 dark:text-slate-100;
+  }
+  .section-sub {
+    @apply text-sm text-slate-500 dark:text-slate-400 mt-0.5;
+  }
+}
+
+@layer utilities {
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Shimmer loading */
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmerAnim 1.5s infinite;
+  }
+  @keyframes shimmerAnim {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Hide scrollbar but allow scroll */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Upload zone */
+.upload-zone {
+  transition: all 0.25s ease;
+  border: 2px dashed #cbd5e1;
+}
+.dark .upload-zone { border-color: #334155; }
+.upload-zone:hover, .upload-zone.active {
+  border-color: #7c3aed;
+  background: rgba(124, 58, 237, 0.04);
+  transform: scale(1.01);
+}
+.dark .upload-zone:hover, .dark .upload-zone.active {
+  background: rgba(124, 58, 237, 0.08);
+}
+
+/* Sidebar link active state */
+.nav-link-active {
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(79,70,229,0.10));
+  color: #7c3aed;
+}
+.dark .nav-link-active {
+  background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(99,102,241,0.12));
+  color: #a78bfa;
+}
+
+/* Prose-like AI content */
+.ai-prose { line-height: 1.75; }
+.ai-prose p { margin-bottom: 0.75rem; }
+.ai-prose ul, .ai-prose ol { padding-left: 1.4rem; margin-bottom: 0.75rem; }
+.ai-prose li { margin-bottom: 0.35rem; }
+.ai-prose strong { font-weight: 600; }

@@ -1,0 +1,216 @@
+===============================
+2.list in dict -- possible
+================================
+==> create list inside the dict object. 
+
+examples:
+=========
+>>> d={"sno":1,"name":"rs","me":[20,18,25],"em":[80,60,78],"college":"abit"}
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': [20, 18, 25], 'em': [80, 60, 78], 'college': 'abit'}
+>>> print(d,type(d))
+{'sno': 1, 'name': 'rs', 'me': [20, 18, 25], 'em': [80, 60, 78], 'college': 'abit'} <class 'dict'>
+>>> for k,v in d.items():
+...     print(k,"==>",v,type(v),"==>",type(d))
+...
+sno ==> 1 <class 'int'> ==> <class 'dict'>
+name ==> rs <class 'str'> ==> <class 'dict'>
+me ==> [20, 18, 25] <class 'list'> ==> <class 'dict'>
+em ==> [80, 60, 78] <class 'list'> ==> <class 'dict'>
+college ==> abit <class 'str'> ==> <class 'dict'>
+
+==> whatever predefined functions are there for list, you can perform alll these predefined functions in inner list also 
+
+>>> d={"sno":1,"name":"rs","me":[20,18,25],"em":[80,60,78],"college":"abit"}
+>>> d.get("me").append(22)
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': [20, 18, 25, 22], 'em': [80, 60, 78], 'college': 'abit'}
+>>> d["em"]
+[80, 60, 78]
+>>> d["em"].insert(1,101)
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': [20, 18, 25, 22], 'em': [80, 101, 60, 78], 'college': 'abit'}
+>>>
+
+>>> d.get("me").sort()
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': [18, 20, 22, 25], 'em': [80, 101, 60, 78], 'college': 'abit'}
+>>>
+
+>>> d={"sno":1,"name":"rs","me":[20,18,25],"em":[80,60,78],"college":"abit"}
+>>> d["em"].sort(reverse=True)
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': [20, 18, 25], 'em': [80, 78, 60], 'college': 'abit'}
+>>>
+
+>>> del d["me"][::2]
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': [18], 'em': [80, 78, 60], 'college': 'abit'}
+>>>
+
+>>> del d.get("em")[1:]
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': [18], 'em': [80], 'college': 'abit'}
+
+>>> d={"sno":1,"name":"rs","me":[20,18,25],"em":[80,60,78],"college":"abit"}
+>>> d.pop("me")
+[20, 18, 25]
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'em': [80, 60, 78], 'college': 'abit'}
+
+>>> d["me"]=[2,25,12]
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'em': [80, 60, 78], 'college': 'abit', 'me': [2, 25, 12]}
+>>> del d["em"]
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'college': 'abit', 'me': [2, 25, 12]}
+>>>
+
+========================
+Tuple in Dict  --- possible
+========================
+==> create tuple object inside the dict object
+
+>>> d={"sno":1,"name":"rs","me":(20,18,25),"em":(80,60,78),"college":"abit"}
+>>> print(d,type(d))
+{'sno': 1, 'name': 'rs', 'me': (20, 18, 25), 'em': (80, 60, 78), 'college': 'abit'} <class 'dict'>
+>>> for k,v in d.items():
+...     print(k,"==>",v,"==>",type(v),"==>",type(d))
+...
+sno ==> 1 ==> <class 'int'> ==> <class 'dict'>
+name ==> rs ==> <class 'str'> ==> <class 'dict'>
+me ==> (20, 18, 25) ==> <class 'tuple'> ==> <class 'dict'>
+em ==> (80, 60, 78) ==> <class 'tuple'> ==> <class 'dict'>
+college ==> abit ==> <class 'str'> ==> <class 'dict'>
+
+we can perform predefined function of tuple on inner tuple 
+
+>>> d={"sno":1,"name":"rs","me":(20,18,25),"em":(80,60,78),"college":"abit"}
+>>> d.get("em")[1:]
+(60, 78)
+>>> d["me"][::2]
+(20, 25)
+>>> d.get("me").count(20)
+1
+>>> d.get("me").count(200)
+0
+>>> sorted(d["me"])
+[18, 20, 25]
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': (20, 18, 25), 'em': (80, 60, 78), 'college': 'abit'}
+>>> tuple(sorted(d["me"]))
+(18, 20, 25)
+>>> d["me"]=tuple(sorted(d["me"]))
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': (18, 20, 25), 'em': (80, 60, 78), 'college': 'abit'}
+>>> d["me"]=tuple(sorted(d.get("em"))[::-1])
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': (80, 78, 60), 'em': (80, 60, 78), 'college': 'abit'}
+>>>
+
+
+========================
+set in dict -- possible
+========================
+
+create set objectr inside the dict object
+
+>>> d={"sno":1,"name":"rs","me":{20,18,25},"em":{80,60,78},"college":"abit"}
+>>> print(d,type(d))
+{'sno': 1, 'name': 'rs', 'me': {25, 18, 20}, 'em': {80, 60, 78}, 'college': 'abit'} <class 'dict'>
+>>> for k,v in d.items():
+...     print(k,"==>",v,"==>",type(v),"==>",type(d))
+...
+sno ==> 1 ==> <class 'int'> ==> <class 'dict'>
+name ==> rs ==> <class 'str'> ==> <class 'dict'>
+me ==> {25, 18, 20} ==> <class 'set'> ==> <class 'dict'>
+em ==> {80, 60, 78} ==> <class 'set'> ==> <class 'dict'>
+college ==> abit ==> <class 'str'> ==> <class 'dict'>
+
+>>> d={"sno":1,"name":"rs","me":{20,18,25},"em":{80,60,78},"college":"abit"}
+>>> d.get("me").add(14)
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': {25, 18, 20, 14}, 'em': {80, 60, 78}, 'college': 'abit'}
+>>> d.get("em").add(50)
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': {25, 18, 20, 14}, 'em': {80, 50, 60, 78}, 'college': 'abit'}
+>>> d["totalmarks"]=d["me"].union(d.get("em"))
+>>>
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': {25, 18, 20, 14}, 'em': {80, 50, 60, 78}, 'college': 'abit', 'totalmarks': {14, 78, 80, 18, 50, 20, 25, 60}}
+>>>
+>>> d.get("totalmarks").remove(78)
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': {25, 18, 20, 14}, 'em': {80, 50, 60, 78}, 'college': 'abit', 'totalmarks': {14, 80, 18, 50, 20, 25, 60}}
+>>>
+
+>>> d.popitem()
+('totalmarks', {14, 80, 18, 50, 20, 25, 60})
+>>> print(d)
+{'sno': 1, 'name': 'rs', 'me': {25, 18, 20, 14}, 'em': {80, 50, 60, 78}, 'college': 'abit'}
+>>>
+
+
+====================
+dict in list ----- possible 
+====================
+iinerside=--> dict
+outer side --> list
+
+>>> lst=[10,"rs",{"python":20,"java":18,"dbms":17},"abit"]
+>>> print(lst,type(lst))
+[10, 'rs', {'python': 20, 'java': 18, 'dbms': 17}, 'abit'] <class 'list'>
+>>> for val in lst:
+...     print(val,"==>",type(val),"==>",type(lst))
+...
+10 ==> <class 'int'> ==> <class 'list'>
+rs ==> <class 'str'> ==> <class 'list'>
+{'python': 20, 'java': 18, 'dbms': 17} ==> <class 'dict'> ==> <class 'list'>
+abit ==> <class 'str'> ==> <class 'list'>
+
+>>> for k,v in lst[2].items():
+...     print(k,"==>",v)
+...
+python ==> 20
+java ==> 18
+dbms ==> 17
+>>>
+
+>>> lst[2].get("python")+lst[2].get("java")+lst[-2].get("dbms")
+55
+>>> lst[2]["TOT"]=lst[2].get("python")+lst[2].get("java")+lst[-2].get("dbms")
+>>> print(lst)
+[10, 'rs', {'python': 20, 'java': 18, 'dbms': 17, 'TOT': 55}, 'abit']
+
+>>> print(lst)
+[10, 'rs', {'python': 20, 'java': 18, 'dbms': 17, 'TOT': 55}, 'abit']
+>>> lst[2].pop("dbms")
+17
+>>> print(lst)
+[10, 'rs', {'python': 20, 'java': 18, 'TOT': 55}, 'abit']
+>>> lst.insert(-1,{"ts":"hyd","kar":"bang"})
+>>> print(lst)
+[10, 'rs', {'python': 20, 'java': 18, 'TOT': 55}, {'ts': 'hyd', 'kar': 'bang'}, 'abit']
+>>> del lst[2:4]
+>>> print(lst)
+[10, 'rs', 'abit']
+>>> lst.append({1:5,2:10,7:25})
+>>> print(lst)
+[10, 'rs', 'abit', {1: 5, 2: 10, 7: 25}]
+>>> lst.remove(({1:5,2:10,7:25}))
+>>> print(lst)
+[10, 'rs', 'abit']
+>>> lst.pop(-1)
+'abit'
+>>> print(lst)
+[10, 'rs']
+>>> lst.pop(-1)
+'rs'
+>>> lst.pop(-1)
+10
+
+
+==================
+dict in tuple 
+===================
+

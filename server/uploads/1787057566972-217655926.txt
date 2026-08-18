@@ -1,0 +1,191 @@
+SYNTAX-5
+=========
+print(f"value cum message {var1},{var2},{var3},....{var-n}")
+
+==> f will supply the values to variables or place holders
+
+==> this syntax will display message cum value with letter 'f'
+
+examples
+========
+>>> a=10
+>>> print(f"value of a={a}")
+value of a=10
+>>> print(f"value of a = {a}")
+value of a = 10
+>>> print(f"{a} is the value of a")
+10 is the value of a
+>>> print("{a} is the value of a")
+{a} is the value of a
+
+>>> a=10
+>>> b=20
+>>> c=a+b
+>>> print(f"sum of {a} and {b} = {c}")
+sum of 10 and 20 = 30
+
+>> print(f"{a}+{b}={c}")
+10+20=30
+
+# sum(a0,20)=30 sub(10,20)=-10
+>>> print(f"sum({a},{b})={c} sub({a},{b})={a-b}")
+sum(10,20)=30 sub(10,20)=-10
+>>> print(f"sum({a},{b})={c} sub({a},{b})={b-a}")
+sum(10,20)=30 sub(10,20)=10
+>>> print(f"sum({a},{b})={c} sub({b},{a})={b-a}")
+sum(10,20)=30 sub(20,10)=10
+
+==========================================
+syntax-6
+=========
+print(val of message with format specifier)
+=========================================
+==> this syntax will display message cum value with format specifiers 
+
+i am very talentedhavuing the knolede on follwoing h/w,s/w,pythn,c,java,es,vlsi,mathemaricsksks
+i wanto specifier something 
+
+int  
+float 
+str 
+
+>>> import datetime
+>>> todaydate=datetime.datetime.now()
+>>> print(todaydate)
+2026-04-16 21:04:35.907642
+>>> print(todaydate)
+2026-04-16 21:04:35.907642
+>>> todaydate.strftime("%A")
+'Thursday'
+>>> todaydate.strftime("%a")
+'Thu'
+>>> todaydate.strftime("%x")
+'04/16/26'
+>>> todaydate.strftime("%X")
+'21:04:35'
+>>> todaydate=datetime.datetime.now()
+>>> print(todaydate)
+2026-04-16 21:09:13.820993
+>>> todaydate.strftime("%X")
+'21:09:13'
+>>> todaydate.strftime("%I")
+'09'
+
+==> in python programming, we use 3 types of format specifiers
+1. %d is used for representing integer data
+2  %f is used for representing float data
+3  %s is used for representing str data 
+
+==> if we dont have format specifiers for nay value then that value must be converted into str by using str() and use %s
+
+examples
+========
+>>> a=10
+>>> print("val of a=%d" %a)
+val of a=10
+>>> a="hi"
+>>> print("val of a=%d" %a)
+Traceback (most recent call last):
+  File "<python-input-34>", line 1, in <module>
+    print("val of a=%d" %a)
+          ~~~~~~~~~~~~~~^~
+TypeError: %d format: a real number is required, not str
+
+>>> a=10
+>>> b=20
+>>> c=a+b
+>>> print("sum of %d and %d=%d" %(a,b,c))
+sum of 10 and 20=30
+>>> print("mul(%d,%d=%d" %(a,b,c))
+mul(10,20=30
+>>> print("mul(%d,%d=%d)" %(b,a,c))
+mul(20,10=30)
+>>> print("mul(%d,%d)=%d" %(b,a,c))
+mul(20,10)=30
+
+#program for %f (float) representation
+
+>>> a=1.2
+>>> print("val of a=%f" %a)
+val of a=1.200000
+>>> a=2.22
+>>> print("val of a=%f" %a)
+val of a=2.220000
+>>> print("val of a=%0.2f" %a)
+val of a=2.22
+>>> print("val of a=%0.3f" %a)
+val of a=2.220
+>>> print("val of a=%0.4f" %a)
+val of a=2.2200
+>>> print("val of a=%0.10f" %a)
+val of a=2.2200000000
+
+#another program for %f (float) representation
+>> a=1.2364782345
+>>> print("val of a=%0.2f" %a)
+val of a=1.24
+>>> a=1.2344782345
+>>> print("val of a=%0.2f" %a)
+val of a=1.23
+>>> print("val of a=%0.4f" %a)
+val of a=1.2345
+
+>>> print(round(a,2))
+1.23
+>>> a=1.23547
+>>> print(round(a,2))
+1.24
+
+#prgram for %s reresentatin
+
+>>> rollno=5
+>>> sname="sateesh"
+>>> marks=54.56
+>>> print("my roll number is %d and my name is %s and my marks %f " %(rollno,sname,marks))
+my roll number is 5 and my name is sateesh and my marks 54.560000
+>>> print("my roll number is %d and my name is '%s' and my marks %f " %(rollno,sname,marks))
+my roll number is 5 and my name is 'sateesh' and my marks 54.560000
+
+#another prgram for %s reresentatin
+
+>>> lst=[10,"rs",34.56,True,(2+3j)]
+>>> print("contents of lst=%d" %lst)
+Traceback (most recent call last):
+  File "<python-input-81>", line 1, in <module>
+    print("contents of lst=%d" %lst)
+          ~~~~~~~~~~~~~~~~~~~~~^~~~
+TypeError: %d format: a real number is required, not list
+>>> print("contents of lst=%d" %str(lst))
+Traceback (most recent call last):
+  File "<python-input-82>", line 1, in <module>
+    print("contents of lst=%d" %str(lst))
+          ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+TypeError: %d format: a real number is required, not str
+>>> print("contents of lst=%s" %str(lst))
+contents of lst=[10, 'rs', 34.56, True, (2+3j)]
+>>> d={1:2,3:4,5:6}
+>>> print("contents of lst=%d" %d)
+Traceback (most recent call last):
+  File "<python-input-85>", line 1, in <module>
+    print("contents of lst=%d" %d)
+          ~~~~~~~~~~~~~~~~~~~~~^~
+TypeError: %d format: a real number is required, not dict
+>>> print("contents of lst=%s" %str(d))
+contents of lst={1: 2, 3: 4, 5: 6}
+
+-----------------------------------------------
+int to float and float ot int
+>>> a=10
+>>> print("contents of a=%f" %a)
+contents of a=10.000000
+>>> print("contents of a=%0.2f" %a)
+contents of a=10.00
+>>> a=52.13
+>>> print("contents of a=%d" %a)
+contents of a=52
+
+syntax-7
+=========
+print(val,end="delimeter")
+
+==> thissyntax dispklay the values of any iterable object in same line.

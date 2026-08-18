@@ -1,0 +1,308 @@
+2.Non-empty dict
+===================
+==> a non empty dict is on, which contains elements and whose lenght is > 0(zero)
+
+syntax
+======
+dictobj={key1:val1,key2:val2,.....,key(n):val(n)}
+
+examples
+==========
+>>> d2={"python":"rs","C":"dennis","java":"james"}
+>>> print(d2,type(d2))
+{'python': 'rs', 'C': 'dennis', 'java': 'james'} <class 'dict'>
+>>> len(d2)
+3
+
+===================================================
+sybtax for addng  (key,value) to the empty/non-empty dict object
+=======================================================
+dictobject[key1]=val1
+dictobject[key2]=val2
+.
+.
+.
+.
+.
+dictobject[key-n]=val(n)
+
+here key1,key2,,...keyn are values of key
+here val1,val2,....valn are values of value
+
+examples 
+=========
+>>> d1={}
+>>> print(d1,type(d1))
+{} <class 'dict'>
+>>> len(d1)
+0
+>>> d1["branch"]="ece"
+>>> print(d1,type(d1))
+{'branch': 'ece'} <class 'dict'>
+>>> d2[100]=1.5
+>>> print(d1,type(d1))
+{'branch': 'ece'} <class 'dict'>
+>>> d1[100]=1.5
+>>> print(d1,type(d1))
+{'branch': 'ece', 100: 1.5} <class 'dict'>
+>>> d1[400]=121
+>>> print(d1,type(d1))
+{'branch': 'ece', 100: 1.5, 400: 121} <class 'dict'>
+>>> d1[100]=463
+>>> print(d1,type(d1))
+{'branch': 'ece', 100: 463, 400: 121} <class 'dict'>
+
+>>> print(d1,type(d1))
+{'branch': 'ece', 100: 463, 400: 121} <class 'dict'>
+>>> len(d1)
+3
+============================================
+Predefined Functions in Dict
+==============================
+=> we know that on thwe dict object we can perform the following
+1. we get the value of value by passing value of key 
+2.we can modify the old value of value by passing exist value of key
+3.we can add (key,value) to dict object
+
+==> we can also perform following additional operations along with above operations
+1.clear()
+2.copy()
+3.pop(key)
+4.popitem()
+5.get(key)
+6.keys()
+7.values()
+8.items()
+9.update()
+10.setdefault() ---> discuss later 
+
+=============
+1.clear()
+==============
+==> this function is used for removing all the values from Dict object
+==> when we call this function on empty dict objct then we get Space or None as a Result 
+
+syntax
+=======
+dictobject.clear()
+
+exampales 
+==========
+>>> d1={10:1.2,20:2.2,30:2.3,40:4.4}
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358869231232
+>>> len(d1)
+4
+>>> d1.clear()
+>>> print(d1,type(d1),id(d1))
+{} <class 'dict'> 2358869231232
+>>> len(d1)
+0
+>>> print(d1.clear())
+None
+>>> print({}.clear())
+None
+>>> print(dict().clear())
+None
+==============================
+=========
+pop()
+========
+==> this function is used for removing the (key,value) from dict objectby passing the value of key.
+==> if the value of key does not exiat the we get Keyerror
+
+syntax
+======
+dictobject.pop(key)
+
+examples
+=========
+>>> d1={10:1.2,20:2.2,30:2.3,40:4.4}
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358869233920
+>>> d1.pop(20)
+2.2
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358869233920
+>>> d1.pop(30)
+2.3
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 40: 4.4} <class 'dict'> 2358869233920
+>>> d1.pop(10)
+1.2
+>>> print(d1,type(d1),id(d1))
+{40: 4.4} <class 'dict'> 2358869233920
+>>> d1.pop(40)
+4.4
+
+>>> print(d1,type(d1),id(d1))
+{} <class 'dict'> 2358869233920
+>>> d1.pop(40)
+Traceback (most recent call last):
+  File "<python-input-87>", line 1, in <module>
+    d1.pop(40)
+    ~~~~~~^^^^
+KeyError: 40
+>>> d1={10:1.2,20:2.2,30:2.3,40:4.4}
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358876351232
+>>> d1.pop(50)
+Traceback (most recent call last):
+  File "<python-input-90>", line 1, in <module>
+    d1.pop(50)
+    ~~~~~~^^^^
+KeyError: 50
+
+>>> {}.pop(10)
+Traceback (most recent call last):
+  File "<python-input-91>", line 1, in <module>
+    {}.pop(10)
+    ~~~~~~^^^^
+KeyError: 10
+>>> dict().pop("hi")
+Traceback (most recent call last):
+  File "<python-input-92>", line 1, in <module>
+    dict().pop("hi")
+    ~~~~~~~~~~^^^^^^
+KeyError: 'hi'
+
+========================
+popitem()
+========================
+syntax
+=======
+dictobject.popitem()
+
+==> this function is used for removing last  (key,value) from dict object
+=> when we call this function on empty dict object we get keyerror
+
+examples
+=========
+>>> d1={10:1.2,20:2.2,30:2.3,40:4.4}
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875970240
+>>> d1.popitem()
+(40, 4.4)
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3} <class 'dict'> 2358875970240
+>>> d1.pop()
+Traceback (most recent call last):
+  File "<python-input-98>", line 1, in <module>
+    d1.pop()
+    ~~~~~~^^
+TypeError: pop expected at least 1 argument, got 0
+>>> d1.popitem()
+(30, 2.3)
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2} <class 'dict'> 2358875970240
+>>> d1.popitem()
+(20, 2.2)
+>>> print(d1,type(d1),id(d1))
+{10: 1.2} <class 'dict'> 2358875970240
+>>> d1.popitem()
+(10, 1.2)
+>>> print(d1,type(d1),id(d1))
+{} <class 'dict'> 2358875970240
+
+>>> print(d1,type(d1),id(d1))
+{} <class 'dict'> 2358875970240
+>>> d1.popitem()
+Traceback (most recent call last):
+  File "<python-input-106>", line 1, in <module>
+    d1.popitem()
+    ~~~~~~~~~~^^
+KeyError: 'popitem(): dictionary is empty'
+>>> {}.popitem()
+Traceback (most recent call last):
+  File "<python-input-107>", line 1, in <module>
+    {}.popitem()
+    ~~~~~~~~~~^^
+KeyError: 'popitem(): dictionary is empty'
+>>> dict().pop()
+Traceback (most recent call last):
+  File "<python-input-108>", line 1, in <module>
+    dict().pop()
+    ~~~~~~~~~~^^
+TypeError: pop expected at least 1 argument, got 0
+>>>
+
+===================================
+copy()
+==================================
+==> this function is used for copying the content of dictobject1 into another dictobject2 (implements shallow copy)
+
+syntax
+========
+Dictobject2=Dictobject1.copy()
+
+examples
+===============
+>>> d1={10:1.2,20:2.2,30:2.3,40:4.4}
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875970688
+>>> d2=d1.copy()
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875967296
+>>> d1[400]=1.1
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 400: 1.1} <class 'dict'> 2358875970688
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875967296
+>>> d2[500]=125
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 500: 125} <class 'dict'> 2358875967296
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 400: 1.1} <class 'dict'> 2358875970688
+>>>
+>>> d1={10:1.2,20:2.2,30:2.3,40:4.4}
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875970240
+>>> d1={10:1.2,20:2.2,30:2.3,40:4.4}
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875970688
+>>> d2=d1.copy()
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875967296
+>>> d1[400]=1.1
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 400: 1.1} <class 'dict'> 2358875970688
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4} <class 'dict'> 2358875967296
+>>> d2[500]=125
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 500: 125} <class 'dict'> 2358875967296
+>>> print(d1,type(d1),id(d1))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 400: 1.1} <class 'dict'> 2358875970688
+>>> d1.pop(10)
+1.2
+>>> print(d1,type(d1),id(d1))
+{20: 2.2, 30: 2.3, 40: 4.4, 400: 1.1} <class 'dict'> 2358875970688
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 500: 125} <class 'dict'> 2358875967296
+>>> d1.pop(10)
+1.2
+>>> print(d1,type(d1),id(d1))
+{20: 2.2, 30: 2.3, 40: 4.4, 400: 1.1} <class 'dict'> 2358875970688
+>>> print(d2,type(d2),id(d2))
+{10: 1.2, 20: 2.2, 30: 2.3, 40: 4.4, 500: 125} <class 'dict'> 2358875967296
+>>>
+
+==========
+get() ---- IMPs
+==========
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
